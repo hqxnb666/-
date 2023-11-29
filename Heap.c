@@ -14,6 +14,7 @@ void HPDestory(HP* php)
 	php->capacity = 0;
 	php->size = 0;
 }
+
 void Swap(HDataType* p1, HDataType* p2)
 {
 	HDataType tmp = *p1;
@@ -61,7 +62,7 @@ void Adjustdown(HDataType* a, int size, int parent)
 	int child = parent * 2 + 1;
 	while (child < size)
 	{
-		if (a[child + 1] < a[child] && child + 1 < size)
+		if (child + 1 < size && a[child + 1] < a[child])
 		{
 			++child;
 		}
@@ -69,7 +70,7 @@ void Adjustdown(HDataType* a, int size, int parent)
 		{
 			Swap(&a[child], &a[parent]);
 			parent = child;
-			child = (child + 1) * 2;
+			child = child  * 2 + 1;
 		}
 		else
 		{
@@ -77,6 +78,7 @@ void Adjustdown(HDataType* a, int size, int parent)
 		}
 	}
 }
+
 void HPPop(HP* php)//É¾³ý¶¥¶ËÔªËØ
 {
 	assert(php);
